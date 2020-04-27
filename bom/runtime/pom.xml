@@ -87,9 +87,16 @@
                         <phase>process-resources</phase>
                         <goals>
                             <goal>generate-extensions-json</goal>
+                            <goal>generate-platform-bom</goal>
                         </goals>
                     </execution>
-                    
+                    <execution>
+                        <id>compare-boms</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>compare-boms</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
                     <overridesFile>${overridesfile}</overridesFile>
