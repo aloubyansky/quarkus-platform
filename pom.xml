@@ -51,7 +51,7 @@
         <graalvmHome>${env.GRAALVM_HOME}</graalvmHome>
         <postgres.url>jdbc:postgresql:hibernate_orm_test</postgres.url>
 
-        <quarkus.version>1.9.0.Final</quarkus.version>
+        <quarkus.version>999-SNAPSHOT</quarkus.version>
 
         <!-- After upgrading camel-quarkus regenerate the test modules by running
 
@@ -82,6 +82,7 @@
 
     <modules>
         <module>bom</module>
+        <module>descriptor</module>
         <module>integration-tests</module>
     </modules>
 
