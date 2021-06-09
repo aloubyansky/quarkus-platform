@@ -15,6 +15,7 @@
     <module>quarkus-universe</module>
     <module>quarkus</module>
     <module>quarkus-hazelcast</module>
+    <module>quarkus-optaplanner</module>
     <module>quarkus-qpid-jms</module>
     <module>quarkus-blaze-persistence</module>
     <module>quarkus-maven-plugin</module>
@@ -31,7 +32,7 @@
         <plugin>
           <groupId>io.quarkus</groupId>
           <artifactId>quarkus-platform-bom-maven-plugin</artifactId>
-          <version>0.0.18</version>
+          <version>0.0.19-SNAPSHOT</version>
           <extensions>true</extensions>
         </plugin>
       </plugins>

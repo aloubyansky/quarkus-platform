@@ -65,7 +65,7 @@
         <kogito-quarkus.version>1.6.0.Final</kogito-quarkus.version>
         <optaplanner-quarkus.version>8.6.0.Final</optaplanner-quarkus.version>
 
-        <quarkus-platform-bom-generator.version>0.0.18</quarkus-platform-bom-generator.version>
+        <quarkus-platform-bom-generator.version>0.0.19-SNAPSHOT</quarkus-platform-bom-generator.version>
         <build-helper-maven-plugin.version>3.1.0</build-helper-maven-plugin.version>
         <rpkgtests-maven-plugin.version>0.8.0</rpkgtests-maven-plugin.version>
         <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
@@ -628,11 +628,30 @@
             <properties>
                 <overridesfile>
                     ${resourcesdir}/extensions-overrides.json,
-                    ${resourcesdir}/extensions-support-overrides.json,
+                    ${resourcesdir}/rhproduct/core/extensions-support-overrides.json
                 </overridesfile>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.quarkus</groupId>
+                        <artifactId>quarkus-platform-bom-maven-plugin</artifactId>
+                        <configuration>
+                            <platformConfig>
+                                <core combine.children="append">
+                                    <extensionList>${resourcesdir}/rhproduct/core/extensions-support-overrides.json</extensionList>
+                                </core>
+                                <members combine.children="append">
+                                    <member>
+                                        <name>OptaPlanner</name>
+                                        <enabled>true</enabled>
+                                    </member>
+                                </members>
+                            </platformConfig>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
-
     </profiles>
-
 </project>
