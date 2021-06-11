@@ -646,6 +646,10 @@
                                         <name>OptaPlanner</name>
                                         <enabled>true</enabled>
                                     </member>
+                                    <member>
+                                        <name>QpidJMS</name>
+                                        <extensionList>${resourcesdir}/rhproduct/qpid/extensions-support-overrides.json</extensionList>
+                                     </member>
                                 </members>
                             </platformConfig>
                         </configuration>
