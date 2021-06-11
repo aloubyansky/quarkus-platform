@@ -1,0 +1,12 @@
+{
+  "extensions" :[
+    {
+      "group-id": "org.optaplanner",
+      "artifact-id":"optaplanner-quarkus-jackson",
+      "metadata" : { 
+       "redhat-support" : [
+         "tech-preview" ]
+       }
+    }
+  ]
+}
