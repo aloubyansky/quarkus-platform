@@ -8695,18 +8695,6 @@
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-distribution</artifactId>
-        <version>9.4.42.v20210604</version>
-        <type>tar.gz</type>
-      </dependency>
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-distribution</artifactId>
-        <version>9.4.42.v20210604</version>
-        <type>zip</type>
-      </dependency>
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-hazelcast</artifactId>
         <version>9.4.42.v20210604</version>
       </dependency>
