@@ -3,35 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.redhat.quarkus.platform</groupId>
-    <artifactId>quarkus-hazelcast-parent</artifactId>
+    <groupId>io.quarkus.platform</groupId>
+    <artifactId>quarkus-platform-parent</artifactId>
     <version>999-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
-  <artifactId>quarkus-hazelcast-client-quarkus-platform-properties</artifactId>
+  <artifactId>maven-repo-zip-generator</artifactId>
   <packaging>pom</packaging>
-  <name>Quarkus Platform - Hazelcast - Quarkus Platform Properties</name>
+  <name>Quarkus Platform - Maven Repo Zip Generator</name>
   <properties>
     <gpg.skip>true</gpg.skip>
   </properties>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.redhat.quarkus.platform</groupId>
-        <artifactId>quarkus-hazelcast-client</artifactId>
-        <version>${project.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <build>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -56,25 +39,25 @@
     </pluginManagement>
     <plugins>
       <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-platform-bom-maven-plugin</artifactId>
+        <version>0.0.43-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>process-resources</phase>
             <goals>
-              <goal>platform-properties</goal>
+              <goal>generate-maven-repo-zip</goal>
             </goals>
+            <configuration>
+              <generateMavenRepoZip>
+                <bom>com.redhat.quarkus:quarkus-universe-bom:999-SNAPSHOT</bom>
+                <excludedArtifacts>
+                  <key>io.netty:netty-tcnative:${os.detected.classifier}:jar</key>
+                  <key>io.netty:netty-transport-native-unix-common:${os.detected.name}-${os.detected.arch}:jar</key>
+                </excludedArtifacts>
+                <includedVersionsPattern>*redhat-*</includedVersionsPattern>
+              </generateMavenRepoZip>
+            </configuration>
           </execution>
         </executions>
       </plugin>

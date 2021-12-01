@@ -8,6 +8,7 @@
     <version>999-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
+  <groupId>com.redhat.quarkus.platform</groupId>
   <artifactId>quarkus-parent</artifactId>
   <packaging>pom</packaging>
   <name>Quarkus Platform - Core - Parent</name>

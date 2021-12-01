@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>io.quarkus.platform</groupId>
+    <groupId>com.redhat.quarkus.platform</groupId>
     <artifactId>quarkus-parent</artifactId>
     <version>999-SNAPSHOT</version>
     <relativePath>..</relativePath>
@@ -12,12 +12,12 @@
   <packaging>pom</packaging>
   <name>Quarkus Platform - Core - Quarkus Platform Properties</name>
   <properties>
-    <platform.quarkus.native.builder-image>quay.io/quarkus/ubi-quarkus-native-image:21.2-java11</platform.quarkus.native.builder-image>
+    <platform.quarkus.native.builder-image>registry.access.redhat.com/quarkus/mandrel-21-rhel8:21.2</platform.quarkus.native.builder-image>
   </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>io.quarkus.platform</groupId>
+        <groupId>com.redhat.quarkus.platform</groupId>
         <artifactId>quarkus-bom</artifactId>
         <version>${project.version}</version>
         <type>pom</type>

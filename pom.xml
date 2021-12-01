@@ -71,7 +71,7 @@
 
         <quarkus-google-cloud-services.version>0.10.0</quarkus-google-cloud-services.version>
 
-        <quarkus-platform-bom-generator.version>0.0.42</quarkus-platform-bom-generator.version>
+        <quarkus-platform-bom-generator.version>0.0.43-SNAPSHOT</quarkus-platform-bom-generator.version>
         <build-helper-maven-plugin.version>3.1.0</build-helper-maven-plugin.version>
         <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
         <maven-plugin-plugin.version>3.6.1</maven-plugin-plugin.version>
@@ -557,6 +557,7 @@
             <properties>
                 <quarkus.upstream.version>${quarkus.version}</quarkus.upstream.version>
                 <platform.groupId>com.redhat.quarkus.platform</platform.groupId>
+                <quarkus-bom.version>2.2.3.Final-redhat-00013</quarkus-bom.version>
             </properties>
             <build>
                 <plugins>
@@ -570,6 +571,11 @@
                                     <bom>com.redhat.quarkus:quarkus-universe-bom:${platform.version}</bom>
                                 </universal>
                                 <core combine.children="append">
+                                    <dependencyManagement>
+                                        <dependency>org.xerial.snappy:snappy-java:1.1.8.4-redhat-00001</dependency>
+                                        <dependency>com.github.luben:zstd-jni:1.4.9.5-redhat-00003</dependency>
+                                        <dependency>org.apache.logging.log4j:log4j-1.2-api:2.14.0.redhat-00004</dependency>
+                                    </dependencyManagement>
                                     <metadataOverrideFiles>
                                         <file>${resourcesdir}/core/extensions-support-overrides.json</file>
                                     </metadataOverrideFiles>
@@ -624,6 +630,14 @@
                                         <prefer>*redhat-*</prefer>
                                     </versionConstraintPreferences>
                                 </bomGenerator>
+                                <generateMavenRepoZip>
+                                    <bom>com.redhat.quarkus:quarkus-universe-bom:${platform.version}</bom>
+                                    <includedVersionsPattern>*redhat-*</includedVersionsPattern>
+                                    <excludedArtifacts>
+                                        <artifact>io.netty:netty-tcnative:${os.detected.classifier}:jar</artifact>
+                                        <artifact>io.netty:netty-transport-native-unix-common:${os.detected.name}-${os.detected.arch}:jar</artifact>
+                                    </excludedArtifacts>
+                                </generateMavenRepoZip>
                             </platformConfig>
                         </configuration>
                     </plugin>
