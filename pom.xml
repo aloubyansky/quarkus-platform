@@ -205,7 +205,7 @@
                                 <dependency>io.quarkiverse.vault:quarkus-vault-deployment:${quarkus-vault.version}</dependency>
                                 <dependency>io.quarkiverse.vault:quarkus-vault-model:${quarkus-vault.version}</dependency>
                                 <!-- Snakeyaml -->
-                                <dependency>org.yaml:snakeyaml:1.31</dependency>
+                                <dependency>org.yaml:snakeyaml:1.32</dependency>
                             </dependencyManagement>
                             <extensionGroupIds>
                                 <groupId>io.quarkus</groupId>
