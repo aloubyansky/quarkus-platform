@@ -78,7 +78,7 @@
         <quarkus-google-cloud-services.version>1.0.0</quarkus-google-cloud-services.version>
         <quarkus-vault.version>1.0.2</quarkus-vault.version>
 
-        <quarkus-platform-bom-generator.version>0.0.48</quarkus-platform-bom-generator.version>
+        <quarkus-platform-bom-generator.version>0.0.60</quarkus-platform-bom-generator.version>
         <build-helper-maven-plugin.version>3.1.0</build-helper-maven-plugin.version>
         <maven-plugin-plugin.version>3.6.1</maven-plugin-plugin.version>
         <useReleaseProfile>true</useReleaseProfile>
@@ -271,6 +271,7 @@
                                         <artifact>org.optaplanner:optaplanner-quarkus-jsonb-integration-test:${optaplanner-quarkus.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Kogito</name>
@@ -319,6 +320,7 @@
                                         <artifact>org.kie.kogito:kogito-quarkus-serverless-workflow-integration-test:${kogito-quarkus.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>QpidJMS</name>
@@ -328,11 +330,20 @@
                                     <lastDetectedBomUpdate>io.quarkus.platform:quarkus-qpid-jms-bom:2.7.0.Final</lastDetectedBomUpdate>
                                     <next>${platform.groupId}:quarkus-qpid-jms-bom:${platform.version}</next>
                                 </release>
+                                <dependencyManagement>
+                                    <dependencySpec><!-- https://issues.apache.org/jira/browse/QPIDJMS-566, remove once qpid-jms-client:1.6.0 reaches us -->
+                                        <artifact>org.amqphub.quarkus:quarkus-qpid-jms:${quarkus-qpid-jms.version}</artifact>
+                                        <exclusions>
+                                            <exclusion>org.apache.geronimo.specs:geronimo-jms_2.0_spec</exclusion>
+                                        </exclusions>
+                                    </dependencySpec>
+                                </dependencyManagement>
                                 <tests>
                                     <test>
                                         <artifact>org.amqphub.quarkus:quarkus-qpid-jms-integration-tests:${quarkus-qpid-jms.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Cassandra</name>
@@ -366,6 +377,7 @@
                                         <artifact>com.datastax.oss.quarkus:cassandra-quarkus-integration-tests-no-mapper:${quarkus-cassandra-client.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>AmazonServices</name>
@@ -393,6 +405,7 @@
                                         <artifact>io.quarkiverse.amazonservices:quarkus-amazon-services-integration-tests:${quarkus-amazon-services.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Camel</name>
@@ -485,6 +498,7 @@
                                         <artifact>org.apache.camel.quarkus:camel-quarkus-integration-test-fhir:${camel-quarkus.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Hazelcast</name>
@@ -499,6 +513,7 @@
                                         <artifact>com.hazelcast:quarkus-hazelcast-client-integration-tests:${quarkus-hazelcast-client.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Debezium-Outbox</name>
@@ -530,6 +545,7 @@
                                         <artifact>io.debezium:debezium-quarkus-outbox-integration-tests:${debezium-quarkus-outbox.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>Blaze-Persistence</name>
@@ -566,6 +582,7 @@
                                         <artifact>com.blazebit:blaze-persistence-examples-quarkus-testsuite-native-h2:${quarkus-blaze-persistence.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                             <member>
                                 <name>GoogleCloudServices</name>
@@ -583,6 +600,7 @@
                                         <artifact>io.quarkiverse.googlecloudservices:quarkus-google-cloud-services-main-it:${quarkus-google-cloud-services.version}</artifact>
                                     </test>
                                 </tests>
+                                <keepThirdpartyExclusions>false</keepThirdpartyExclusions>
                             </member>
                         </members>
                         <!-- Platform BOM generator configuration -->
