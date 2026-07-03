@@ -206,6 +206,10 @@
                                     <!-- Qute Web -->
                                     <dependency>io.quarkiverse.qute.web:quarkus-qute-web:${quarkus-qute-web.version}</dependency>
                                     <dependency>io.quarkiverse.qute.web:quarkus-qute-web-deployment:${quarkus-qute-web.version}</dependency>
+
+                                    <!-- CVE fixes -->
+                                    <dependency>org.apache.httpcomponents.client5:httpclient5:5.6.2</dependency>
+                                    <dependency>org.apache.httpcomponents.core5:httpcore5:5.4.3</dependency>
                                 </dependencyManagement>
                                 <extensionGroupIds>
                                     <groupId>io.quarkus</groupId>
